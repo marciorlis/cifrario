@@ -1,0 +1,6 @@
+{title: Exemplo de Música}
+{artist: Artista Exemplo}
+
+{comment: Primeira parte}
+[C]Esta é uma [G]música de [Am]exemplo [F]
+[C]Renderizada via [G]ChordPro [C]

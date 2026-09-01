@@ -11,12 +11,6 @@
     .song-container { margin-top: 2rem; line-height: 1.8; }
     .chord { font-weight: bold; color: #2b6cb0; position: relative; }
   </style>
-
-  <!-- 1. Carrega o ChordSheetJS do CDN com defer -->
-  <script defer src="https://cdn.jsdelivr.net/npm/chord-sheet-js@8.1.0/build/chord-sheet-js.min.js"></script>
-  
-  <!-- 2. Carrega seu script apenas após as bibliotecas estarem prontas -->
-  <script defer src="app.js"></script>
 </head>
 <body>
 
@@ -24,8 +18,7 @@
     <h1>Visualizador ChordPro</h1>
     <label for="songSelect">Escolha uma música:</label>
     <select id="songSelect">
-      <option value="">Selecione...</option>
-      <option value="cifras/musica-1.txt">Música 1</option>
+      <option value="">Carregando...</option>
     </select>
   </header>
 
@@ -33,5 +26,8 @@
     <p>Selecione uma música no menu acima.</p>
   </main>
 
+  <!-- Garante o carregamento em ordem na raiz do HTML -->
+  <script src="chord-sheet-js.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

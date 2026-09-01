@@ -1,0 +1,63 @@
+name: Deploy GitHub Pages com Índice ChordPro
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repositório
+        uses: actions/checkout@v4
+
+      - name: Gerar songs.json a partir da pasta cifras/
+        run: |
+          python3 -c "
+          import os, json, re
+
+          cifras_dir = 'cifras'
+          songs = []
+
+          if os.path.exists(cifras_dir):
+              for file in os.listdir(cifras_dir):
+                  if file.endswith(('.txt', '.chordpro')):
+                      path = os.path.join(cifras_dir, file)
+                      title = file.replace('.txt', '').replace('.chordpro', '').replace('-', ' ').title()
+                      
+                      # Tenta extrair a tag {title:...} caso exista dentro do arquivo
+                      with open(path, 'r', encoding='utf-8') as f:
+                          content = f.read()
+                          match = re.search(r'\{title:\s*(.*?)\}', content, re.IGNORECASE)
+                          if match:
+                              title = match.group(1).strip()
+
+                      songs.append({'title': title, 'path': path})
+
+          songs.sort(key=lambda x: x['title'])
+
+          with open('songs.json', 'w', encoding='utf-8') as f:
+              json.dump(songs, f, ensure_ascii=False, indent=2)
+          "
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artefato estático
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy para GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

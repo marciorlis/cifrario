@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minhas Cifras (ChordPro)</title>
+  
+  <!-- Estilos básicos -->
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; max-width: 800px; }
+    header { margin-bottom: 2rem; }
+    .song-container { margin-top: 2rem; line-height: 1.8; }
+    .chord { font-weight: bold; color: #2b6cb0; position: relative; }
+  </style>
+
+  <!-- Biblioteca para converter ChordPro em HTML -->
+  <script src="https://cdn.jsdelivr.net/npm/chord-sheet-js@8.1.0/build/chord-sheet-js.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Visualizador ChordPro</h1>
+    <label for="songSelect">Escolha uma música:</label>
+    <select id="songSelect">
+      <option value="">Selecione...</option>
+      <option value="cifras/musica-1.txt">Música 1</option>
+    </select>
+  </header>
+
+  <main id="cifraOutput" class="song-container">
+    <p>Selecione uma música no menu acima.</p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

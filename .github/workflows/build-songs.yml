@@ -1,4 +1,4 @@
-name: Deploy GitHub Pages com Índice ChordPro
+name: Gerar Índice de Cifras e Deploy no Pages
 
 on:
   push:
@@ -35,7 +35,6 @@ jobs:
                       path = os.path.join(cifras_dir, file)
                       title = file.replace('.txt', '').replace('.chordpro', '').replace('-', ' ').title()
                       
-                      # Tenta extrair a tag {title:...} caso exista dentro do arquivo
                       with open(path, 'r', encoding='utf-8') as f:
                           content = f.read()
                           match = re.search(r'\{title:\s*(.*?)\}', content, re.IGNORECASE)

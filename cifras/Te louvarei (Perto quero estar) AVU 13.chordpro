@@ -1,0 +1,97 @@
+{title: Te louvarei (Perto quero estar) | AVU 13}
+{Subtitle: }
+{lyricist: }
+{composer: letra e música: Kelly Carpenter}
+{lyricist: } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##{textfont: dingbatsy}
+{chordfont: arial bold}
+{textsize: 12}
+{chordsize: 13}
+{titles: left}
+{chordcolour: black}
+{columns: 2}
+{columnspace: 25}
+{comment_box: compasso 4/4 | Tom: Lá maior}
+{comment: Intro}
+{start_of_grid shape="9" label="Intro"}
+| A . . . | D . . . |
+| A . . . | D . . . |
+| E . . . |
+{end_of_grid}
+
+
+##{comment_italic: N.C. = Não toca acorde}
+##<span foreground="red"></span>
+
+{comment: }
+{start_of_verse  cc="Verse1" label="Verse 1"}
+#{textcolor: red}{textcolor:}<span foreground="red"></span>
+[A]____ Perto que[D/A]ro estar
+[E/G#]____ Junto aos [A]Teus pés
+[E/G#]____ Pois prazer [D/F#]maior não há
+[F#m7]____ Que [E]me render[D] e Te a[E]dorar
+  
+[A] Tudo que [D/A]há em mim
+[E/G#]____ Quero te o[A]fertar
+[E/G#]____ Mas ainda [D/F#]é pouco, eu sei
+[F#m7]____ Se [E]comparado [D]ao que ganhei
+[A/E]____ Não sou a[D/E]penas ser[E]vo, 
+Teu [A]amigo me tornei
+[A] [E/A] [D/A] [D/F#] [E] 
+{column_break}
+
+
+
+
+
+
+
+
+
+
+
+[A]____ Te [E/A]louva[D/A]rei
+[A]____ Não [E/G#]importam [D/F#]as cir[E]cunstâncias
+[A]____ A[E/A]dora[D/A]rei
+[D/F#]____ Somente[E] a ti [A]Jesus
+{end_of_verse}
+
+
+
+
+
+
+
+
+{ci:_________________}
+{ci:%{lyricist}}
+{ci:%{translator}}
+{ci:%{composer}}
+{ci:%{arranger}}
+{ci:%{copyright}}
+{ci:%{artist}}
+
+#{ci:OBSERVAÇÕES:}
+##{comment_italic: N.C. = Não toca acorde}
+##{ci:CIFRA SIMPLICADA (diferente do CTP edição 2017 arranjo Marcio Lisboa)}
+#{ci:Intro = trecho texto em vermelho}
+##{ci:<sym delta/> = Acorde adicionado (não tem no CTP)}
+##{ci:** = acorde de preparação (não consta no CTP)}
+##{ci:** = cifras na cor cinza podem ser omitidas}
+{image: src="cvm_10.png" anchor="page" x="450" y="600" opacity="0.8" scale="40%"}

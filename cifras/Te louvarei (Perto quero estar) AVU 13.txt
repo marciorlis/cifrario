@@ -6,8 +6,6 @@
 
 
 
-
-
 ##{textfont: dingbatsy}
 {chordfont: arial bold}
 {textsize: 12}

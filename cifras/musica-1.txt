@@ -4,5 +4,6 @@
 {comment: Primeira parte}
 [C]Esta é uma [G]música de [Am]exemplo [F]
 [C]Renderizada via [G]ChordPro [C]
-[C]Esta é uma [G]música de [Am]exemplo [F]
+
+[C]Esta [G]é uma [Am]música de e[F]xemplo 
 [C]Renderizada via [G]ChordPro [C]

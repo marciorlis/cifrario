@@ -4,8 +4,6 @@
 {composer: letra e música: Kelly Carpenter}
 {lyricist: } 
 
-
-
 ##{textfont: dingbatsy}
 {chordfont: arial bold}
 {textsize: 12}
@@ -43,28 +41,11 @@ Teu [A]amigo me tornei
 [A] [E/A] [D/A] [D/F#] [E] 
 {column_break}
 
-
-
-
-
-
-
-
-
-
-
 [A]____ Te [E/A]louva[D/A]rei
 [A]____ Não [E/G#]importam [D/F#]as cir[E]cunstâncias
 [A]____ A[E/A]dora[D/A]rei
 [D/F#]____ Somente[E] a ti [A]Jesus
 {end_of_verse}
-
-
-
-
-
-
-
 
 {ci:_________________}
 {ci:%{lyricist}}

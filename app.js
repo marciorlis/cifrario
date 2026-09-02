@@ -1,25 +1,67 @@
-document.getElementById('songSelect').addEventListener('change', async (e) => {
+const songSelect = document.getElementById('songSelect');
+const cifraOutput = document.getElementById('cifraOutput');
+
+function formatSongLabel(fileName) {
+  return decodeURIComponent(fileName)
+    .replace(/\.txt$/i, '')
+    .replace(/[-_]+/g, ' ')
+    .trim();
+}
+
+async function loadSongList() {
+  songSelect.innerHTML = '<option value="">Carregando...</option>';
+
+  try {
+    const response = await fetch('./cifras/');
+    if (!response.ok) {
+      throw new Error(`Não foi possível listar as músicas (${response.status})`);
+    }
+
+    const html = await response.text();
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const fileLinks = [...doc.querySelectorAll('a[href]')]
+      .map(link => link.getAttribute('href'))
+      .filter(href => href && href.toLowerCase().endsWith('.txt'));
+
+    const songs = [...new Set(fileLinks.map(link => link.replace(/^\.\//, '')))].sort();
+
+    if (!songs.length) {
+      songSelect.innerHTML = '<option value="">Nenhuma música encontrada</option>';
+      return;
+    }
+
+    songSelect.innerHTML = '<option value="">Selecione...</option>' +
+      songs.map(file => `<option value="${encodeURI(file)}">${formatSongLabel(file)}</option>`).join('');
+  } catch (error) {
+    songSelect.innerHTML = '<option value="">Selecione...</option>' +
+      '<option value="cifras/musica-1.txt">Música 1</option>';
+    console.warn('Não foi possível listar o diretório via fetch; usando fallback.', error);
+  }
+}
+
+songSelect.addEventListener('change', async (e) => {
   const filePath = e.target.value;
-  const container = document.getElementById('cifraOutput');
 
   if (!filePath) {
-    container.innerHTML = '<p>Selecione uma música no menu acima.</p>';
+    cifraOutput.innerHTML = '<p>Selecione uma música no menu acima.</p>';
     return;
   }
 
   try {
-    // 1. Busca o arquivo ChordPro na pasta local
     const response = await fetch(filePath);
-    const chordProText = await response.text();
+    if (!response.ok) {
+      throw new Error(`Falha ao carregar a música (${response.status})`);
+    }
 
-    // 2. Transforma o texto ChordPro em estrutura HTML
+    const chordProText = await response.text();
     const parser = new ChordSheetJS.ChordProParser();
     const song = parser.parse(chordProText);
     const formatter = new ChordSheetJS.HtmlTableFormatter();
-    
-    // 3. Renderiza na página
-    container.innerHTML = formatter.format(song);
+
+    cifraOutput.innerHTML = formatter.format(song);
   } catch (error) {
-    container.innerHTML = `<p style="color: red;">Erro ao carregar a cifra: ${error.message}</p>`;
+    cifraOutput.innerHTML = `<p style="color: red;">Erro ao carregar a cifra: ${error.message}</p>`;
   }
 });
+
+loadSongList();

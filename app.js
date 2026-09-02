@@ -5,7 +5,13 @@ function formatSongLabel(fileName) {
   return decodeURIComponent(fileName)
     .replace(/\.txt$/i, '')
     .replace(/[-_]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .replace(/\b\w/g, char => char.toUpperCase())
     .trim();
+}
+
+function normalizeSongPath(file) {
+  return file.replace(/^\.?\//, '').replace(/\\/g, '/');
 }
 
 async function loadSongList() {
@@ -23,7 +29,7 @@ async function loadSongList() {
       .map(link => link.getAttribute('href'))
       .filter(href => href && href.toLowerCase().endsWith('.txt'));
 
-    const songs = [...new Set(fileLinks.map(link => link.replace(/^\.\//, '')))].sort();
+    const songs = [...new Set(fileLinks.map(normalizeSongPath))].sort();
 
     if (!songs.length) {
       songSelect.innerHTML = '<option value="">Nenhuma música encontrada</option>';
